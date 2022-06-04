@@ -11,7 +11,7 @@
 
   <p>
     - BPMN visualizer wymaga podłączenia serwera backendowego wykonującego obliczenia.
-    Można go zbudować ręcznie klonując repozytorium:
+    Można go zbudować ręcznie klonując repozytorium: <a href="https://github.com/Kondziu1999/BPMNVisualizer">repo</a>
     Lub użyć standalone wersji dostępnej w formie notatnika:
     <a href="https://colab.research.google.com/drive/1aDX4EDf2q1gBQPZVTMm2HsqIH1SMwpj9?usp=sharing">link</a>
   </p>

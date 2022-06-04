@@ -4,7 +4,7 @@
 
     <input type="file" @change="previewFile" accept="*.csv">
 
-    <h3>Columns</h3>
+    <h3>Kolumny</h3>
 
     <label>
       Podaj nazwy kolumn

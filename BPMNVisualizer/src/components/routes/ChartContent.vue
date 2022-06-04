@@ -82,7 +82,7 @@ export default {
         bodyFormdata.append('tsh', this.minNodeValue ? this.minNodeValue : 0)
 
         axios
-            .post(`${this.backendConfirmedUrl}/image`, bodyFormdata,
+            .post(`${this.backendConfirmedUrl}/generate`, bodyFormdata,
                 {responseType: 'arraybuffer'}
             )
             .then(response => {

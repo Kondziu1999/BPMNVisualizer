@@ -73,30 +73,29 @@ export default {
   methods: {
     fetchImage() {
       this.error = null;
-      if (this.backendConfirmedUrl) {
 
-        this.loading = true;
-        var bodyFormdata = new FormData();
-        bodyFormdata.append('file', this.fileData)
-        bodyFormdata.append('columns', this.columnsConfirmedString)
-        bodyFormdata.append('tsh', this.minNodeValue ? this.minNodeValue : 0)
+      this.loading = true;
+      var bodyFormdata = new FormData();
+      bodyFormdata.append('file', this.fileData)
+      bodyFormdata.append('columns', this.columnsConfirmedString)
+      bodyFormdata.append('tsh', this.minNodeValue ? this.minNodeValue : 0)
 
-        axios
-            .post(`${this.backendConfirmedUrl}/generate`, bodyFormdata,
-                {responseType: 'arraybuffer'}
-            )
-            .then(response => {
-              let returnedB64 = Buffer.from(response.data).toString('base64');
-              this.imageBase64Data = `data:image/png;base64, ${returnedB64}`;
-            })
-            .catch(err => {
-              this.error = err;
-            })
-            .finally(() => {
-              this.loading = false;
-            })
-      }
+      axios
+          .post(`http://localhost:5000/generate`, bodyFormdata,
+              {responseType: 'arraybuffer'}
+          )
+          .then(response => {
+            let returnedB64 = Buffer.from(response.data).toString('base64');
+            this.imageBase64Data = `data:image/png;base64, ${returnedB64}`;
+          })
+          .catch(err => {
+            this.error = err;
+          })
+          .finally(() => {
+            this.loading = false;
+          })
     }
+
   },
   mounted() {
     this.fetchImage();

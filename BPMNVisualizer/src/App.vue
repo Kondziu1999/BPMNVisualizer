@@ -1,8 +1,6 @@
 <template>
   <v-app id="app">
-    <LeftPanel :backendConfirmed="backendConfirmed"
-               :backendConfirmedUrl="backendConfirmedUrl"
-               v-on:editBackend="editBackend"
+    <LeftPanel
                :fileConfirmed="fileConfirmed"
                v-on:editFile="editFile"
                v-on:applyFilter="applyFilter"
@@ -11,11 +9,6 @@
     </LeftPanel>
 
     <v-main id="mainDiv">
-      <EnvironmentConfiguration
-          v-if="route === 'BACKEND'"
-          v-on:confirmBackend="confirmBackend"
-          :backendConfirmedUrl="backendConfirmedUrl">
-      </EnvironmentConfiguration>
 
       <SelectFile
           v-if="route==='FILE'"
@@ -27,15 +20,13 @@
       <ChartContent
           v-if="route==='CHART'"
           :fileData="fileData"
-          :columnsConfirmedString="columnsConfirmedString"
-          :backendConfirmedUrl="backendConfirmedUrl">
+          :columnsConfirmedString="columnsConfirmedString">
       </ChartContent>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import EnvironmentConfiguration from './components/routes/EnvironmentConfiguration.vue';
 import LeftPanel from './components/LeftPanel.vue';
 import ChartContent from './components/routes/ChartContent.vue';
 import SelectFile from "./components/routes/SelectFile";
@@ -45,17 +36,9 @@ export default {
   components: {
     LeftPanel,
     SelectFile,
-    EnvironmentConfiguration,
     ChartContent
   },
   methods: {
-    confirmBackend: function (backendUrl) {
-      this.backendConfirmedUrl = backendUrl;
-      this.backendConfirmed = true;
-    },
-    editBackend: function () {
-      this.backendConfirmed = false;
-    },
     confirmFile: function (fileData, columnsConfirmedString) {
       this.fileData = fileData;
       this.columnsConfirmedString = columnsConfirmedString;
@@ -76,9 +59,7 @@ export default {
   },
   data() {
     return {
-      route: 'BACKEND',
-      backendConfirmed: false,
-      backendConfirmedUrl: '',
+      route: 'FILE',
       fileConfirmed: false,
       fileData: undefined,
       columnsConfirmedString: 'Case ID,Activity,Start Timestamp',

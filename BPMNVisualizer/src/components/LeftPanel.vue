@@ -26,8 +26,6 @@
 export default {
   name: 'LeftPanel',
   props: {
-    backendConfirmed: Boolean,
-    backendConfirmedUrl: String,
     fileConfirmed: Boolean,
     route: String
   },
@@ -35,21 +33,15 @@ export default {
     sideBarElements(){
       return [
         {
-          primary: 'Konfiguracja środowiska',
-          value: 'BACKEND',
-          warning: false,
-          done: this.backendConfirmed
-        },
-        {
           primary: 'Dane wejściowe',
           value: 'FILE',
-          warning: !this.backendConfirmed,
+          warning: false,
           done: this.fileConfirmed,
         },
         {
           primary: 'Wizualizacja',
           value: 'CHART',
-          warning: !this.fileConfirmed || !this.backendConfirmed,
+          warning: !this.fileConfirmed,
           done: false,
         }
       ]
@@ -60,9 +52,6 @@ export default {
     }
   },
   methods: {
-    editBackend() {
-      this.$emit('editBackend')
-    },
     editFile() {
       this.$emit('editFile')
     },

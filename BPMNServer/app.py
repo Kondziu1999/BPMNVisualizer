@@ -1,6 +1,5 @@
 from flask import Flask, request, send_file
-from flask_cors import CORS, cross_origin
-import io
+from flask_cors import CORS
 import os
 
 from engine import *
@@ -8,7 +7,6 @@ from engine import *
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = './upload'
 cors = CORS(app, resources=r'/*', headers='Content-Type')
-# app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 @app.route("/")

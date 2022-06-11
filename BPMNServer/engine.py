@@ -1,13 +1,9 @@
-import itertools
 import more_itertools as iter
 import pm4py
 
 import pygraphviz as pgv
-from itertools import product
-from IPython.display import Image, display
 import pandas as pd
-import os.path
-from collections import Counter
+
 
 from collections import defaultdict
 from typing import Dict, Set

@@ -14,6 +14,7 @@
       </label>
 
         <v-btn
+          v-if="columns.length < 3"
           elevation="2"
           fab
           x-small
@@ -74,6 +75,7 @@ export default {
   },
   data() {
     return {
+      defaultColumnsString: 'Case ID,Activity,Start Timestamp',
       isCsv: false,
       fileData: File,
       currentColumn: "",
@@ -97,7 +99,7 @@ export default {
       const file = event.target.files[0];
       if (file) {
         this.fileData = file;
-
+        this.columns = this.defaultColumnsString.split(',');
         if (file.name.split('.')[1] === "csv") {
           this.isCsv = true;
         }

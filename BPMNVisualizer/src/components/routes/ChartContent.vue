@@ -46,7 +46,7 @@
       Loading...
     </p>
 
-    <img v-if="!loading && !error && !!imageBase64Data" v-bind:src="imageBase64Data" alt="Business model" id="model_img">
+    <img style="width: 100%" v-if="!loading && !error && !!imageBase64Data" v-bind:src="imageBase64Data" alt="Business model" id="model_img">
   </div>
 </template>
 
